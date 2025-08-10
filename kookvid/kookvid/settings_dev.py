@@ -77,11 +77,11 @@ DATABASES = {
     }
 }
 # import dj_database_url
-# DATABASES = {
-#     'default': dj_database_url.parse(
-#         "postgresql://postgres:OSwmZbhqlNZypZWPuMGyiGPbaENeasSD@shortline.proxy.rlwy.net:42179/railway"
-#     )
-# }
+DATABASES = {
+    'default': dj_database_url.parse(
+        "postgresql://postgres:OSwmZbhqlNZypZWPuMGyiGPbaENeasSD@shortline.proxy.rlwy.net:42179/railway"
+    )
+}
 
 
 

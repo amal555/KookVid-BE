@@ -76,22 +76,22 @@ WSGI_APPLICATION = 'kookvid.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-# DATABASES = {
-#     'default': dj_database_url.parse(
-#         "postgresql://postgres:OSwmZbhqlNZypZWPuMGyiGPbaENeasSD@postgres.railway.internal:5432/railway"
-#     )
-# }
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "railway",
-        "USER": "postgres",
-        "PASSWORD": "OSwmZbhqlNZypZWPuMGyiGPbaENeasSD",
-        "HOST": "postgres.railway.internal",
-        "PORT": "5432",
-    }
+    'default': dj_database_url.parse(
+        "postgresql://postgres:OSwmZbhqlNZypZWPuMGyiGPbaENeasSD@postgres.railway.internal:5432/railway"
+    )
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "railway",
+#         "USER": "postgres",
+#         "PASSWORD": "OSwmZbhqlNZypZWPuMGyiGPbaENeasSD",
+#         "HOST": "postgres.railway.internal",
+#         "PORT": "5432",
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
