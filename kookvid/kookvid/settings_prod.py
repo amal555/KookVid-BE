@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-7^x-k9@px)&hi8!o398rz+9rdk#pucedq()yxk%e7qey3$dj34
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://kookvid.com/','https://kookvid.com/','kookvid.up.railway.app','http://192.168.1.6']
 
 
 # Application definition
