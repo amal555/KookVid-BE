@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'kookvid.wsgi.application'
 #     }
 # }
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
-if not DATABASE_URL:
-    raise RuntimeError("DATABASE_URL is not set. Please configure it in Railway.")
+# DATABASE_URL = os.environ.get('DATABASE_URL')
+# if not DATABASE_URL:
+#     raise RuntimeError("DATABASE_URL is not set. Please configure it in Railway.")
 
 DATABASES = {
     'default': dj_database_url.config(
