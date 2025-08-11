@@ -76,14 +76,12 @@ WSGI_APPLICATION = 'kookvid.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-# DATABASES = {
-#     'default': dj_database_url.parse(
-#         "postgresql://postgres:OSwmZbhqlNZypZWPuMGyiGPbaENeasSD@postgres.railway.internal:5432/railway"
-#     )
-# }
+
+
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get("DATABASE_URL")
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
     )
 }
 
