@@ -77,17 +77,16 @@ WSGI_APPLICATION = 'kookvid.wsgi.application'
 #     }
 # }
 
-# DATABASE_URL = os.environ.get('DATABASE_URL')
-# if not DATABASE_URL:
-#     raise RuntimeError("DATABASE_URL is not set. Please configure it in Railway.")
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set. Please configure it in Railway.")
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"postgres://{os.environ['PGUSER']}:{os.environ['PGPASSWORD']}@{os.environ['PGHOST']}:{os.environ['PGPORT']}/{os.environ['PGDATABASE']}",
+        default=DATABASE_URL,
         conn_max_age=600
     )
 }
-print("DEBUG: DATABASE_URL =", os.environ.get("DATABASE_URL"))
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.postgresql",
