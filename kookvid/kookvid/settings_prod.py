@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': os.getenv("PGDATABASE"),
         'USER': os.getenv("PGUSER"),
         'PASSWORD': os.getenv("PGPASSWORD"),
-        'HOST': "postgres-3z5x.railway.internal",  # must come from DB service vars
+        'HOST': os.getenv("PGHOST"),  # must come from DB service vars
         'PORT': os.getenv("PGPORT"),
     }
 }
