@@ -2,6 +2,8 @@ from datetime import timedelta
 import os
 from pathlib import Path
 import dj_database_url
+from dotenv import load_dotenv
+load_dotenv('/home/ec2-user/KookVid-BE/.env')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,12 +13,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7^x-k9@px)&hi8!o398rz+9rdk#pucedq()yxk%e7qey3$dj34'
+SECRET_KEY = os.getenv('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = ['https://kookvid.com/','https://kookvid.com/','kookvid.up.railway.app','http://192.168.1.6']
+ALLOWED_HOSTS = ['https://kookvid.com/','https://kookvid.com/','13.61.100.221','http://192.168.1.6']
 
 
 # Application definition
@@ -81,21 +84,15 @@ WSGI_APPLICATION = 'kookvid.wsgi.application'
 # if not DATABASE_URL:
 #     raise RuntimeError("DATABASE_URL is not set. Please configure it in Railway.")
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv("PGDATABASE"),
-#         'USER': os.getenv("PGUSER"),
-#         'PASSWORD': os.getenv("PGPASSWORD"),
-#         'HOST': os.getenv("PGHOST"),  # must come from DB service vars
-#         'PORT': os.getenv("PGPORT"),
-#     }
-# }
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv("DATABASE_URL")
-    )
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': os.getenv('DB_NAME'),
+    'USER': os.getenv('DB_USER'),
+    'PASSWORD': os.getenv('DB_PASSWORD'),
+    'HOST': os.getenv('DB_HOST'),
+    'PORT': os.getenv('DB_PORT', '5432'),
+  }
 }
 
 # DATABASES = {
