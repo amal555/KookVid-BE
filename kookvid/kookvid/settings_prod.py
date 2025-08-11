@@ -136,7 +136,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=7),        # Access token valid for 7 days
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),      # Refresh token valid for 30 days
@@ -150,20 +149,33 @@ SIMPLE_JWT = {
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+# STATIC_URL = '/static/'
+# MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # React build path (dist folder)
 REACT_APP_DIR = BASE_DIR / 'dish-master-hub' / 'dist'
 TEMPLATES[0]['DIRS'] = [
-    r"C:\Users\Lenovo 500\Documents\CookU\dish-master-hub\dist",
+    BASE_DIR / "dish-master-hub" / "dist",
 ]
 
 STATICFILES_DIRS = [
-    r"C:\Users\Lenovo 500\Documents\CookU\dish-master-hub\dist\assets",
+    BASE_DIR / "dish-master-hub" / "dist" / "assets",
 ]
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True 
+
+
+# for s3
+AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+# For uploaded files (media)
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+
+# Option: also put STATIC on S3
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
