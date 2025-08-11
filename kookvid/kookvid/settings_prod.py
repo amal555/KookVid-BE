@@ -87,6 +87,7 @@ DATABASES = {
         conn_max_age=600
     )
 }
+print("DEBUG: DATABASE_URL =", os.environ.get("DATABASE_URL"))
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.postgresql",
