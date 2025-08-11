@@ -83,7 +83,7 @@ if not DATABASE_URL:
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=DATABASE_URL,
+        default=f"postgres://{os.environ['PGUSER']}:{os.environ['PGPASSWORD']}@{os.environ['PGHOST']}:{os.environ['PGPORT']}/{os.environ['PGDATABASE']}",
         conn_max_age=600
     )
 }
